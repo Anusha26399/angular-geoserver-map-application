@@ -9,7 +9,7 @@ const router = express.Router();
 const upload = multer({ dest: 'uploads/' });
 
 // GeoServer configuration
-const GEOSERVER_URL = 'http://192.168.20.69:8080/geoserver';
+const GEOSERVER_URL = 'http:localhost/geoserver';
 const GEOSERVER_AUTH = Buffer.from('admin:geoserver').toString('base64');
 
 router.post('/', upload.single('file'), async (req, res) => {
@@ -91,7 +91,7 @@ router.post('/', upload.single('file'), async (req, res) => {
 
     // Step 5: Import to PostgreSQL using ogr2ogr
     console.log('Importing to PostGIS...');
-    const ogrCommand = `ogr2ogr -f "PostgreSQL" PG:"host=192.168.20.69 user=postgres dbname=Anusha password=postgres" "${shpPath}" -nln "${layerName}" -overwrite -lco GEOMETRY_NAME=geom -lco FID=gid -t_srs EPSG:4326`;
+    const ogrCommand = `ogr2ogr -f "PostgreSQL" PG:"host=hostname user=username dbname=Dbname password=password" "${shpPath}" -nln "${layerName}" -overwrite -lco GEOMETRY_NAME=geom -lco FID=gid -t_srs EPSG:4326`;
 
     console.log('Executing ogr2ogr command:', ogrCommand);
     
@@ -146,11 +146,11 @@ async function verifyTableInPostGIS(tableName) {
   const { Pool } = require('pg');
   
   const pool = new Pool({
-    host: '192.168.20.69',
-    user: 'postgres',
-    database: 'Anusha',
-    password: 'postgres',
-    port: 5432,
+    host: 'hostname',
+    user: 'dbusername',
+    database: 'Dbname',
+    password: 'Dbpassword',
+    port:port,
   });
 
   try {
