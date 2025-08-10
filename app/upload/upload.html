@@ -1,0 +1,47 @@
+<!-- upload.component.html -->
+<div class="section-card">
+  <h3 class="section-title">
+    <span class="title-icon">📤</span>
+    Shapefile Upload
+  </h3>
+
+  <div *ngIf="!selectedWorkspace || !selectedDatastore" class="warning-message">
+    <span class="warning-icon">⚠️</span>
+    Please select a project and department first in the Layers tab.
+  </div>
+
+  <div *ngIf="selectedWorkspace && selectedDatastore" class="upload-section">
+    <div class="upload-info">
+      <p><strong>Target:</strong> {{selectedWorkspace}} / {{selectedDatastore}}</p>
+    </div>
+
+    <div class="file-upload-area">
+      <input type="file" #fileInput (change)="onFileSelected($event)" accept=".zip,.shp" class="file-input">
+      <div class="upload-dropzone" (click)="openFileSelector()">
+        <div class="upload-icon">📁</div>
+        <div class="upload-text">
+          <span *ngIf="!uploadState.selectedFile">Click to select shapefile (.zip or .shp)</span>
+          <span *ngIf="uploadState.selectedFile">{{uploadState.selectedFile.name}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="uploadState.isUploading" class="upload-progress">
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="uploadState.uploadProgress"></div>
+      </div>
+      <div class="progress-text">Uploading: {{uploadState.uploadProgress}}%</div>
+    </div>
+
+    <div *ngIf="uploadState.uploadMessage && !uploadState.isUploading" class="upload-message">
+      {{uploadState.uploadMessage}}
+    </div>
+
+    <button class="btn btn-primary btn-upload" 
+            [disabled]="!uploadState.selectedFile || uploadState.isUploading"
+            (click)="onUploadShapefile()">
+      <span class="btn-icon">🚀</span>
+      {{uploadState.isUploading ? 'Uploading...' : 'Upload Shapefile'}}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<!-- layer.component.html -->
+<div class="section-card">
+  <h3 class="section-title">
+    <span class="title-icon">🗂️</span>
+    Layer Management
+  </h3>
+
+  <!-- Workspace Selection -->
+  <div class="form-group">
+    <label class="form-label">Select Workspace</label>
+    <select class="form-select" [(ngModel)]="selectedWorkspace" (change)="onWorkspaceChange()">
+      <option value="">Choose Project...</option>
+      <option *ngFor="let ws of workspaces" [value]="ws.name">{{ws.name}}</option>
+    </select>
+  </div>
+
+  <!-- Datastore Selection -->
+  <div class="form-group" *ngIf="selectedWorkspace">
+    <label class="form-label">Select Department</label>
+    <select class="form-select" [(ngModel)]="selectedDatastore" (change)="onDatastoreChange()">
+      <option value="">Choose department...</option>
+      <option *ngFor="let ds of datastores" [value]="ds.name">{{ds.name}}</option>
+    </select>
+  </div>
+
+  <!-- Available Layers -->
+  <div *ngIf="availableLayers.length > 0" class="layers-section">
+    <h4 class="subsection-title">Available Layers</h4>
+    <div class="layer-list">
+      <div *ngFor="let layer of availableLayers" class="layer-item" [class.active]="isLayerActive(layer)">
+        <label class="layer-toggle">
+          <input type="checkbox" [checked]="isLayerActive(layer)" (change)="onToggleLayer(layer)">
+          <span class="toggle-slider"></span>
+        </label>
+        <div class="layer-info">
+          <div class="layer-name">{{layer.name}}</div>
+          <div class="layer-description">{{layer.title || 'No description'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Layers -->
+  <div *ngIf="activeLayers.length > 0" class="layers-section">
+    <h4 class="subsection-title">Active Layers ({{activeLayers.length}})</h4>
+    <div class="active-layers">
+      <div *ngFor="let layer of activeLayers" class="active-layer-chip">
+        <span class="layer-workspace">{{layer.workspace}}</span>
+        <span class="layer-name">{{layer.name}}</span>
+        <button class="remove-layer" (click)="onRemoveActiveLayer(layer)">×</button>
+      </div>
+    </div>
+  </div>
+</div>

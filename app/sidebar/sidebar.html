@@ -1,0 +1,71 @@
+<!-- sidebar.component.html -->
+<div class="sliding-panel" [class.open]="isPanelOpen">
+  <div class="panel-header">
+    <h2>GeoServer Control Panel</h2>
+    <button class="close-btn" (click)="onTogglePanel()">✕</button>
+  </div>
+
+  <!-- Enhanced Navigation Tabs -->
+  <div class="nav-tabs">
+    <button class="nav-tab" [class.active]="selectedTab === 'layers'" (click)="setTab('layers')">
+      <span class="tab-icon">🗺️</span>
+      <span class="tab-text">Layers</span>
+    </button>
+    <button class="nav-tab" [class.active]="selectedTab === 'workspace'" (click)="setTab('workspace')">
+      <span class="tab-icon">🏗️</span>
+      <span class="tab-text">Departments</span>
+    </button>
+    <button class="nav-tab" [class.active]="selectedTab === 'upload'" (click)="setTab('upload')">
+      <span class="tab-icon">📤</span>
+      <span class="tab-text">Upload</span>
+    </button>
+    <button class="nav-tab" [class.active]="selectedTab === 'dashboard'" (click)="setTab('dashboard')">
+      <span class="tab-icon">📊</span>
+      <span class="tab-text">Dashboard</span>
+    </button>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="panel-content">
+    <!-- Layers Tab -->
+    <div class="tab-content" *ngIf="selectedTab === 'layers'">
+      <app-layer
+        [workspaces]="workspaces"
+        [datastores]="datastores"
+        [availableLayers]="availableLayers"
+        [activeLayers]="activeLayers"
+        [selectedWorkspace]="selectedWorkspace"
+        [selectedDatastore]="selectedDatastore"
+        (workspaceChanged)="onWorkspaceChanged($event)"
+        (datastoreChanged)="onDatastoreChanged($event)"
+        (layerToggled)="onLayerToggled($event)"
+        (activeLayerRemoved)="onActiveLayerRemoved($event)">
+      </app-layer>
+    </div>
+
+    <!-- Datastore Management Tab -->
+    <div class="tab-content" *ngIf="selectedTab === 'workspace'">
+      <app-datastore
+        [selectedWorkspace]="selectedWorkspace"
+        (datastoreCreated)="onDatastoreCreated($event)">
+      </app-datastore>
+    </div>
+
+    <!-- Upload Tab -->
+    <div class="tab-content" *ngIf="selectedTab === 'upload'">
+      <app-upload
+        [selectedWorkspace]="selectedWorkspace"
+        [selectedDatastore]="selectedDatastore"
+        (fileUploaded)="onFileUploaded($event)">
+      </app-upload>
+    </div>
+
+    <!-- Dashboard Tab -->
+    <div class="tab-content" *ngIf="selectedTab === 'dashboard'">
+      <app-dashboard
+        [stats]="dashboardStats"
+        (refreshData)="onDataRefreshed()">
+      </app-dashboard>
+    </div>
+  </div>
+</div>

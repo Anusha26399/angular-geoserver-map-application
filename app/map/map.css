@@ -1,0 +1,130 @@
+/* Map wrapper fills available space */
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* OpenLayers map style */
+.map {
+  width: 100%;
+  height: 100%;
+  background: #e2e8f0;
+  position: relative;
+}
+
+/* Ensure full canvas coverage */
+.map canvas,
+.map .ol-viewport {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Control base reset */
+.ol-control {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  padding: 2px;
+  z-index: 1000;
+}
+
+/* Zoom controls - top left */
+.ol-zoom {
+  top: 10px;
+  left: 10px;
+  right: auto;
+  bottom: auto;
+}
+
+/* Attribution - bottom right */
+.ol-attribution {
+  bottom: 8px !important;
+  right: 8px !important;
+  top: auto !important;
+  left: auto !important;
+  position: absolute !important;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  max-width: 250px;
+  z-index: 1000;
+}
+
+/* Attribution content */
+.ol-attribution ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.ol-attribution li {
+  display: inline;
+  margin-right: 5px;
+}
+
+.ol-attribution a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.ol-attribution a:hover {
+  text-decoration: underline;
+}
+
+/* Attribution toggle button */
+.ol-attribution button {
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  font-size: 11px;
+  padding: 2px 5px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.ol-attribution button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Zoom button style */
+.ol-zoom .ol-zoom-in,
+.ol-zoom .ol-zoom-out {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  font-size: 14px;
+  margin: 2px;
+  padding: 6px 8px;
+}
+
+.ol-zoom .ol-zoom-in:hover,
+.ol-zoom .ol-zoom-out:hover {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Remove inherited relative positioning on children */
+.map * {
+  position: unset !important;
+}
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  min-width: 200px;
+  white-space: normal;
+  font-size: 13px;
+}
+

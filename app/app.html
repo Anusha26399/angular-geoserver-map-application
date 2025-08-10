@@ -1,0 +1,43 @@
+<!-- app.component.html - Updated with GeoServer URL -->
+<div class="app-wrapper">
+  <!-- Header Component -->
+  <app-header
+    [workspaces]="workspaces"
+    [selectedWorkspace]="selectedWorkspace"
+    [isPanelOpen]="isPanelOpen"
+    (togglePanel)="onTogglePanel()"
+    (workspaceChanged)="onWorkspaceChanged($event)"
+    (createWorkspace)="onCreateWorkspace($event)">
+  </app-header>
+
+  <div class="app-container">
+    <!-- Sidebar Component -->
+    <app-sidebar
+      [isPanelOpen]="isPanelOpen"
+      [workspaces]="workspaces"
+      [datastores]="datastores"
+      [availableLayers]="availableLayers"
+      [activeLayers]="activeLayers"
+      [selectedWorkspace]="selectedWorkspace"
+      [selectedDatastore]="selectedDatastore"
+      (panelToggled)="onTogglePanel()"
+      (tabChanged)="onTabChanged($event)"
+      (workspaceChanged)="onWorkspaceChanged($event)"
+      (datastoreChanged)="onDatastoreChanged($event)"
+      (layerToggled)="onLayerToggled($event)"
+      (activeLayerRemoved)="onActiveLayerRemoved($event)"
+      (datastoreCreated)="onDatastoreCreated($event)"
+      (fileUploaded)="onFileUploaded($event)"
+      (dataRefreshed)="onDataRefreshed()">
+    </app-sidebar>
+
+    <!-- Map Component with GeoServer URL -->
+    <app-map
+      [activeLayers]="activeLayers"
+      [geoServerBaseUrl]="geoServerUrl">
+    </app-map>
+  </div>
+
+  <!-- Backdrop -->
+  <div class="panel-backdrop" [class.active]="isPanelOpen" (click)="onTogglePanel()"></div>
+</div>

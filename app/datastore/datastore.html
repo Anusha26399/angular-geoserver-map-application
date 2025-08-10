@@ -1,0 +1,56 @@
+<!-- datastore.component.html -->
+<div class="section-card">
+  <h3 class="section-title">
+    <span class="title-icon">🗄️</span>
+    Department Management
+  </h3>
+
+  <!-- Create PostGIS Datastore -->
+  <div class="form-section" *ngIf="selectedWorkspace">
+    <h4 class="form-section-title">Create PostGIS Datastore</h4>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Department Name</label>
+        <input type="text" class="form-input" [(ngModel)]="newDatastore.name"
+          placeholder="Enter department name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Database Host</label>
+        <input type="text" class="form-input" [(ngModel)]="newDatastore.host" placeholder="192.168.20.69">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Port</label>
+        <input type="text" class="form-input" [(ngModel)]="newDatastore.port" placeholder="5432">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Database Name</label>
+        <input type="text" class="form-input" [(ngModel)]="newDatastore.database"
+          placeholder="Enter database name">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-input" [(ngModel)]="newDatastore.username"
+          placeholder="Database username">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" [(ngModel)]="newDatastore.password"
+          placeholder="Database password">
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="onCreateDatastore()">
+      <span class="btn-icon">🗄️</span>
+      Create Department
+    </button>
+  </div>
+
+  <!-- If no workspace selected -->
+  <div *ngIf="!selectedWorkspace" class="warning-message">
+    <span class="warning-icon">⚠️</span>
+    Please select a project first using the top dropdown.
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<!-- dashboard.component.html -->
+<div class="section-card">
+  <h3 class="section-title">
+    <span class="title-icon">📊</span>
+    GIS Dashboard
+  </h3>
+
+  <div class="dashboard-stats">
+    <div class="stat-card">
+      <div class="stat-icon">🗂️</div>
+      <div class="stat-content">
+        <div class="stat-number">{{stats.workspacesCount}}</div>
+        <div class="stat-label">Projects</div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🗄️</div>
+      <div class="stat-content">
+        <div class="stat-number">{{stats.datastoresCount}}</div>
+        <div class="stat-label">Departments</div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🗺️</div>
+      <div class="stat-content">
+        <div class="stat-number">{{stats.activeLayersCount}}</div>
+        <div class="stat-label">Active Layers</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-actions">
+    <button class="btn btn-secondary" (click)="onRefreshData()">
+      <span class="btn-icon">🔄</span>
+      Refresh Data
+    </button>
+  </div>
+</div>
