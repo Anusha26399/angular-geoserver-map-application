@@ -27,9 +27,21 @@ This project was created to:
 |----------------|---------|
 | **Angular**    | Frontend framework |
 | **TypeScript** | Strong typing & structure |
-| **OpenLayers** | Web mapping & WMS/WFS rendering |
-| **GeoServer**  | Geospatial data server |
-| **HTML/CSS**   | UI & styling |
 
----
+
+## Prerequisites
+- Node.js (v16+ recommended)
+- Angular CLI
+- A running GeoServer instance with published layers
+
+## Quick start (local)
+1. Clone the repository
+   ```bash
+   git clone https://github.com/Anusha26399/angular-geoserver-map-application.git
+   cd angular-geoserver-map-application
+
+2. Install dependencies
+  ``` npm install ```
+    ```ng serve```
+
 
