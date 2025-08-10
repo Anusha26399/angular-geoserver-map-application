@@ -18,7 +18,6 @@ This project was created to:
 - 🔄 **Toggle layer visibility** at runtime
 - 🖱️ Map interactions: pan, zoom
 - 🛠️ Modular **Angular + OpenLayers** integration
-- 🧩 Easy configuration via `environment.ts`
 - 🎨 Custom styling for layers (extendable)
 
 ---
