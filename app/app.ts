@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
   uploadProgress = 0;
   uploadMessage = '';
 
-  geoServerUrl = 'http://192.168.20.69:8080/geoserver';
+  geoServerUrl = 'http:localhost/geoserver';
 
   constructor(private geoServerService: GeoServerService) { }
 
