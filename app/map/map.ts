@@ -32,7 +32,7 @@ interface ActiveLayer {
 })
 export class MapComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() activeLayers: ActiveLayer[] = [];
-  @Input() geoServerBaseUrl: string = 'http://192.168.20.69:8080/geoserver';
+  @Input() geoServerBaseUrl: string = 'http:localhost/geoserver';
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
 
   private map!: OlMap;
