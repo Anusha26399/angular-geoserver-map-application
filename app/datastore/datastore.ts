@@ -29,12 +29,12 @@ export class DatastoreComponent {
   newDatastore: NewDatastore = {
     name: '',
     description: '',
-    host: '192.168.20.69',
-    port: '5432',
-    database: 'Anusha',
-    username: 'postgres',
-    password: 'postgres',
-    schema: 'public'
+    host: 'hostname',
+    port: 'portname',
+    database: 'Dbname',
+    username: 'username',
+    password: 'password',
+    schema: 'schemaname'
   };
 
   onCreateDatastore(): void {
@@ -54,12 +54,12 @@ export class DatastoreComponent {
     this.newDatastore = {
       name: '',
       description: '',
-      host: '192.168.20.69',
-      port: '5432',
+      host: 'hostname',
+      port: 'portname',
       database: '',
-      username: 'postgres',
-      password: 'postgres',
-      schema: 'public'
+      username: 'username',
+      password: 'password',
+      schema: 'schema name'
     };
   }
 }
